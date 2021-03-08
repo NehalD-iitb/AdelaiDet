@@ -100,9 +100,10 @@ if __name__ == "__main__":
                     out_filename = args.output
                 visualized_output.save(out_filename)
             else:
-                cv2.imshow(WINDOW_NAME, visualized_output.get_image()[:, :, ::-1])
-                if cv2.waitKey(0) == 27:
-                    break  # esc to quit
+                cv2.imwrite('coco2.jpg',visualized_output.get_image()[:, :, ::-1] )
+                # cv2.imshow(WINDOW_NAME, visualized_output.get_image()[:, :, ::-1])
+                # if cv2.waitKey(0) == 27:
+                #     break  # esc to quit
     elif args.webcam:
         assert args.input is None, "Cannot have both --input and --webcam!"
         cam = cv2.VideoCapture(0)
@@ -137,9 +138,15 @@ if __name__ == "__main__":
                 isColor=True,
             )
         assert os.path.isfile(args.video_input)
+        i = 0
         for vis_frame in tqdm.tqdm(demo.run_on_video(video), total=num_frames):
             if args.output:
+                i = i + 1
                 output_file.write(vis_frame)
+                cv2.imwrite('coco.jpg',vis_frame )
+
+                if i==100:
+                    break
             else:
                 cv2.namedWindow(basename, cv2.WINDOW_NORMAL)
                 cv2.imshow(basename, vis_frame)
@@ -147,6 +154,9 @@ if __name__ == "__main__":
                     break  # esc to quit
         video.release()
         if args.output:
+            print("hey")
             output_file.release()
         else:
             cv2.destroyAllWindows()
+
+

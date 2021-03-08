@@ -49,6 +49,7 @@ dist/
 /weights
 /export
 eval.sh
+/data
 
 demo/performance.py
 demo/demo2.py

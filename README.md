@@ -138,6 +138,12 @@ Note that:
 - This quick start is made for FCOS. If you are using other projects, please check the projects' own `README.md` in [configs](configs). 
 
 
+## SURGERY PROJECT
+
+VIDEO C annotaion and images path - /home/lishuo/data_maker_videoC/data
+
+
+
 ## Acknowledgements
 
 The authors are grateful to

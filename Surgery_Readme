@@ -1,0 +1,31 @@
+Demo
+
+
+python demo/demo.py \
+    --config-file configs/SOLOv2/R101_3x.yaml \
+    --video-input /home/trainingDir/517_1/VID001C_0.0.0_0.5.34.mp4 \
+    --output videoCresult \
+    --opts MODEL.WEIGHTS SOLOv2_R50_3x.pth 
+
+
+python demo/demo.py \
+    --config-file configs/SOLOv2/R101_3x.yaml \
+    --input /home/lahen/detectron2/AdelaiDet/data/coco/train2017/266.jpeg  \
+    --output cocoR.jpg \
+
+OMP_NUM_THREADS=1 python tools/train_net.py \
+    --config-file configs/SOLOv2/R101_3x.yaml \
+    --eval-only \
+    --num-gpus 4 \
+    OUTPUT_DIR training_dir/SOLOv2_R101_3x \
+    MODEL.WEIGHTS training_dir/SOLOv2_R101_3x/model_0019999.pth
+
+OMP_NUM_THREADS=1 python tools/train_net.py \
+    --config-file configs/SOLOv2/R101_3x.yaml \
+    --num-gpus 4 \
+    OUTPUT_DIR training_dir/SOLOv2_R101_3x
+
+OMP_NUM_THREADS=1 python tools/train_net.py \
+    --config-file configs/SOLOv2/R50_3x.yaml \
+    --num-gpus 4 \
+    OUTPUT_DIR training_dir/SOLOv2_R50_3x
